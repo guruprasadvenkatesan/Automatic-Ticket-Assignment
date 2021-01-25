@@ -9,3 +9,10 @@ gunicorn==19.9.0
 uvloop
 httptools
 tensorflow-cpu
+ntlk
+spacy
+fasttext
+re
+string
+google_translator
+ftfy
