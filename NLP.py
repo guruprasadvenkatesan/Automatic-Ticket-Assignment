@@ -3,13 +3,9 @@ import pickle
 import pandas as pd
 import tensorflow as tf
 
-from dateutil import parser
 import re
-import nltk 
 import string
 import ftfy
-from nltk.corpus import stopwords
-nltk.download('stopwords')
 import spacy
 import fasttext
 from pycountry import languages
@@ -19,19 +15,6 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 # Data Cleaning by removing specific words and symbols that have no meaning
-
-def is_valid_date(date_str):
-    try:
-        parser.parse(date_str)
-        return True
-    except:
-        return False
-
-STOPWORDS = stopwords.words('english')
-STOPWORDS.extend(['yes','na','hi','hello'])
-def remove_stopwords(text):
-    """custom function to remove the stopwords"""
-    return " ".join([word for word in str(text).split() if word not in STOPWORDS])
 
 # Lemitization of Text
 # Initialize spacy 'en' medium model, keeping only tagger component needed for lemmatization
@@ -46,7 +29,6 @@ def lemmatize_text(sentence):
 def preprocess_data(text):
     text = ftfy.fix_text(text)
     text = text.lower()
-    text = ' '.join([w for w in text.split() if not is_valid_date(w)])
     text = re.sub(r"received from:",' ',text)
     text = re.sub(r"from:",' ',text)
     text = re.sub(r"to:",' ',text)
@@ -92,7 +74,6 @@ def preprocess_data(text):
       translator = google_translator()  
       text = translator.translate(text)
 
-    text = remove_stopwords(text)
     text = lemmatize_text(text)
     return text
 
