@@ -1,5 +1,5 @@
 import uvicorn
-#import NLP
+import NLP
 from fastapi import FastAPI
 from pydantic import BaseModel
 import pickle
@@ -8,7 +8,7 @@ class Message(BaseModel):
     text: str
 
 app = FastAPI()
-#loaded_model = tf.keras.models.load_model('Automatic_Ticket_Assignment.h5')
+loaded_model = tf.keras.models.load_model('Automatic_Ticket_Assignment.h5')
 pickle_in = open("tokenizer.pickle","rb")
 tokenizer=pickle.load(pickle_in)
 
