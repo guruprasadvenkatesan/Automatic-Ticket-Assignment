@@ -5,7 +5,6 @@ import tensorflow as tf
 
 import re
 import ftfy
-import spacy
 import fasttext
 
 from tensorflow.keras.preprocessing.text import Tokenizer
@@ -14,14 +13,6 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 # Data Cleaning by removing specific words and symbols that have no meaning
 
 # Lemitization of Text
-# Initialize spacy 'en' medium model, keeping only tagger component needed for lemmatization
-nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
-
-# Define a function to lemmatize the descriptions
-def lemmatize_text(sentence):
-    # Parse the sentence using the loaded 'en' model object `nlp`
-    doc = nlp(sentence)
-    return " ".join([token.lemma_ for token in doc if token.lemma_ !='-PRON-'])
 
 def preprocess_data(text):
     text = ftfy.fix_text(text)
@@ -61,6 +52,5 @@ def preprocess_data(text):
     text = re.sub(r'\s+',' ',text)
     text = text.strip()
 
-    text = lemmatize_text(text)
     return text
 
