@@ -3,6 +3,10 @@ import NLP
 from fastapi import FastAPI
 from pydantic import BaseModel
 import pickle
+import tensorflow as tf
+
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 class Message(BaseModel):
     text: str
