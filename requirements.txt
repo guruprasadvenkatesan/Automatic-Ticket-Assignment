@@ -9,7 +9,7 @@ gunicorn==19.9.0
 uvloop
 httptools
 tensorflow-cpu
-ntlk
+nltk
 spacy
 fasttext
 re
