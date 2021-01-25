@@ -12,7 +12,6 @@ tensorflow-cpu
 nltk
 spacy
 fasttext
-re
 string
 google_translator
 ftfy
