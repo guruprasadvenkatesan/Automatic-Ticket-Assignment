@@ -4,7 +4,6 @@ import pandas as pd
 import tensorflow as tf
 
 import re
-import string
 import ftfy
 import spacy
 import fasttext
@@ -55,7 +54,6 @@ def preprocess_data(text):
     text = re.sub(r'https?:\/\/.*\/\w*', '', text)  
     #remove punctuation !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
     # insert spaces between special characters to isolate them   
-    PUNCT_TO_REMOVE = string.punctuation 
     special_char_pattern = re.compile(r'([{.(-):/\@#$%&;<=?>_!}])')
     text = special_char_pattern.sub(" \\1 ", text)
     text = text.translate(str.maketrans('', '', PUNCT_TO_REMOVE))
