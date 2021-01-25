@@ -2,6 +2,19 @@ import numpy as np
 import pickle
 import pandas as pd
 import tensorflow as tf
+
+from dateutil import parser
+import re
+import nltk 
+import string
+import ftfy
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+import spacy
+import fasttext
+from pycountry import languages
+from google_trans_new import google_translator
+
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
