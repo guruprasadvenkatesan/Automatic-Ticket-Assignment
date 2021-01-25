@@ -23,9 +23,9 @@ def index():
 @app.post("/ticket/")
 async def ticket_assignment(message: Message):
     text =NLP.preprocess_data(message.text)
-    seq= loaded_tokenizer.texts_to_sequences([txt])
+    seq= tokenizer.texts_to_sequences([txt])
     padded = pad_sequences(seq,maxlen=max_length)
-    pred = model.predict(padded)
+    pred = loaded_model.predict(padded)
     pred =np.argmax(pred, axis=1)
     return pred 
 
