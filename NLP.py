@@ -43,9 +43,6 @@ def preprocess_data(text):
     text = re.sub(r'https?:\/\/.*\/\w*', '', text)  
     #remove punctuation !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
     # insert spaces between special characters to isolate them   
-    special_char_pattern = re.compile(r'([{.(-):/\@#$%&;<=?>_!}])')
-    text = special_char_pattern.sub(" \\1 ", text)
-    text = text.translate(str.maketrans('', '', PUNCT_TO_REMOVE))
          
     text = re.sub(r"\s+[a-zA-Z]\s+", ' ', text)
     #remove more than 1 space
