@@ -7,8 +7,6 @@ import re
 import ftfy
 import spacy
 import fasttext
-from pycountry import languages
-from google_trans_new import google_translator
 
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -62,15 +60,6 @@ def preprocess_data(text):
     #remove more than 1 space
     text = re.sub(r'\s+',' ',text)
     text = text.strip()
-
-    PRETRAINED_MODEL_PATH = 'lid.176.bin'
-    model = fasttext.load_model(PRETRAINED_MODEL_PATH)
-    langs = []
-    lang = model.predict(text)[0]
-    lang = str(lang)[11:13]
-    if (lang != 'en'):
-      translator = google_translator()  
-      text = translator.translate(text)
 
     text = lemmatize_text(text)
     return text
