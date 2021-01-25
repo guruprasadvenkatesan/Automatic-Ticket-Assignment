@@ -27,7 +27,8 @@ async def ticket_assignment(message: Message):
     padded = pad_sequences(seq,maxlen=200)
     pred = loaded_model.predict(padded)
     pred =np.argmax(pred, axis=1)
-    return pred 
+    prediction = "the ticket is assigned to Group" + str(pred)
+    return prediction 
 
 # 5. Run the API with uvicorn
 #    Will run on http://127.0.0.1:8000
