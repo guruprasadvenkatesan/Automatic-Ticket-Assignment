@@ -5,7 +5,6 @@ import tensorflow as tf
 
 import re
 import ftfy
-import fasttext
 
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
